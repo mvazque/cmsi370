@@ -5,12 +5,12 @@
 \contentsline {subsection}{\numberline {2.3}Satisfaction}{2}
 \contentsline {section}{\numberline {3}Examination Of Data}{2}
 \contentsline {subsection}{\numberline {3.1}Task 1: Finding a File}{3}
-\contentsline {subsection}{\numberline {3.2}Task 2: Setting up Wi-Fi}{6}
-\contentsline {subsection}{\numberline {3.3}Task 3: Calculator}{7}
-\contentsline {subsection}{\numberline {3.4}Data Summary}{7}
-\contentsline {section}{\numberline {4}Explanation of Results}{7}
-\contentsline {subsection}{\numberline {4.1}Explaining: Finding a File}{7}
-\contentsline {subsection}{\numberline {4.2}Explaining: Setting up Wi-Fi}{8}
-\contentsline {subsection}{\numberline {4.3}Explaining: Getting to Caclulator}{9}
+\contentsline {subsection}{\numberline {3.2}Task 2: Setting up Wi-Fi}{5}
+\contentsline {subsection}{\numberline {3.3}Task 3: Calculator}{5}
+\contentsline {subsection}{\numberline {3.4}Data Summary}{5}
+\contentsline {section}{\numberline {4}Explanation of Results}{6}
+\contentsline {subsection}{\numberline {4.1}Explaining: Finding a File}{6}
+\contentsline {subsection}{\numberline {4.2}Explaining: Setting up Wi-Fi}{7}
+\contentsline {subsection}{\numberline {4.3}Explaining: Getting to Caclulator}{8}
 \contentsline {section}{\numberline {5}Special Notes}{9}
 \contentsline {subsection}{\numberline {5.1}Notes related to Experiment}{9}
