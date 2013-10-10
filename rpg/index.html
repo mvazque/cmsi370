@@ -1,48 +1,75 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bootstrap 101 Template</title>
+    <title>Fantasy RPG Character Select</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="rpg.css">
 
-    <!-- My CSS -->
-    <link rel="stylesheet" href="rpg.css">
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <p class="lead text-info">
-          List of Characters
-        </p>
-        <small>
-          Choose a character from the list below, then click the appropriate button.
-          <em>Have fun!!!</em>
-        </small>
-      </div>
-      <div class="row">
-        <div class="col-md-8">(placeholder for list of characters)</div>
-        <div class="col-md-4">
-          <div class="row">
-            <button type="button" class="btn btn-success btn-lg btn-block">Create</button>
-          </div>
-          <div class="row">
-            <button type="button" class="btn btn-info btn-lg btn-block">Edit</button>
-          </div>
-          <div class="row">
-            <a id="delete-button" href="#" class="btn btn-lg btn-danger btn-block" data-toggle="popover"
-                data-content="If you delete a character, he or she is gone forever."
-                data-original-title="Deletion Warning">Delete</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <h1>Fantasy RPG!</h1>
 
+	
+	<div class="container">
+		<div class = "row">
+			<p class = "lead text-info">
+			List of Characters
+			</p>
+			<small>
+				Choose a character from the list below
+				<em>Have Fun</em>
+			</small>
+		</div>
+		<div class = "row">
+			<div class = "col-md-8">(placeholder for list of characters)</div>
+			<div class = "col-md-4">
+				<div class = "row">
+					<button type="button" class="btn btn-success btn-lg btn-block">Create</button>
+				</div>
+				<div class = "row">
+					<button type="button" class="btn btn-info btn-lg btn-block">Edit</button>
+				</div>
+				<div class = "row">
+					<a data-toggle="modal" href="#deleteModal" class="btn btn-danger btn-lg btn-block">Delete</a>
+					<!--<button type="button" class="btn btn-danger btn-lg btn-block" data-toggle = "popover" titles = "" data-content = "If you delete a character he or she wi;;
+					be gone" data-origial-title = "Delete Character">Delete</button>  -->
+				</div>
+			</div>
+		</div>
+	</div>
+	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	
+	
+	<!-- Button trigger modal -->
+  <!-- Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Are you sure you want to delete this character?</h4>
+        </div>
+        <div class="modal-body">
+         Deleting a character is permanent and <strong>cannot be undone</strong>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Don't Delete</button>
+          <button id="configure-delete-button" type="button" class="btn btn-primary btn-danger">Delete Character</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+	
+	
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
     <!-- Code specific to our RPG user interface. -->
     <script src="rpg.js"></script>
