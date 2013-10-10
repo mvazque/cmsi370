@@ -14,6 +14,7 @@
 		<div class = "row">
 			<p class = "lead text-info">
 			List of Characters
+			<a href="http://www.lmu.edu">Authored by students at LMU</a>
 			</p>
 			<small>
 				Choose a character from the list below
@@ -21,13 +22,16 @@
 			</small>
 		</div>
 		<div class = "row">
-			<div class = "col-md-8">(placeholder for list of characters)</div>
+			<div class = "col-md-8">
+				<!--<select multiple class="form-control">
+				-->
+			</div>
 			<div class = "col-md-4">
 				<div class = "row">
-					<button type="button" class="btn btn-success btn-lg btn-block">Create</button>
+					<a data-toggle="modal" href="#createModal" class="btn btn-success btn-lg btn-block">Create</a>
 				</div>
 				<div class = "row">
-					<button type="button" class="btn btn-info btn-lg btn-block">Edit</button>
+					<a type="button" class="btn btn-info btn-lg btn-block" href="character.html">Edit</a>
 				</div>
 				<div class = "row">
 					<a data-toggle="modal" href="#deleteModal" class="btn btn-danger btn-lg btn-block">Delete</a>
@@ -47,6 +51,26 @@
 	<!-- Button trigger modal -->
   <!-- Modal -->
   <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Are you sure you want to delete this character?</h4>
+        </div>
+        <div class="modal-body">
+         Deleting a character is permanent and <strong>cannot be undone</strong>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Don't Delete</button>
+          <button id="configure-delete-button" type="button" class="btn btn-primary btn-danger">Delete Character</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+	
+	<!-- Button Create modal -->
+  <!-- Modal -->
+  <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
