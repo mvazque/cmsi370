@@ -1,9 +1,3 @@
-// Big things have small beginnings...
-<<<<<<< HEAD
-//$(function () {
-//    $("#delete-button").popover({ placement: 'left' });
-//});
-
 $(function(){
 
 	$('#configure-delete-button').click(function(){
@@ -11,7 +5,16 @@ $(function(){
 	});
 	
 });
-=======
+
+$(function(){
+
+	$('#edit-button').click(function(){
+		var link = document.getElementById("edit-button").href;
+		document.getElementById("edit-button").href = link + document.getElementById("characters").value;
+	});
+	
+});
+
 $(function () {
 
     $("#confirm-delete-button").click(function () {
@@ -22,4 +25,3 @@ $(function () {
     });
 
 });
->>>>>>> 7bfe4bd00b9b9df98b44009658ed2f200488bc74

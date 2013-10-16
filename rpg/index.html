@@ -7,43 +7,8 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="rpg.css">
 
-<<<<<<< HEAD
     <h1>Fantasy RPG!</h1>
 
-	
-	<div class="container">
-		<div class = "row">
-			<p class = "lead text-info">
-			List of Characters
-			<a href="http://www.lmu.edu">Authored by students at LMU</a>
-			</p>
-			<small>
-				Choose a character from the list below
-				<em>Have Fun</em>
-			</small>
-		</div>
-		<div class = "row">
-			<div class = "col-md-8">
-				<!--<select multiple class="form-control">
-				-->
-			</div>
-			<div class = "col-md-4">
-				<div class = "row">
-					<a data-toggle="modal" href="#createModal" class="btn btn-success btn-lg btn-block">Create</a>
-				</div>
-				<div class = "row">
-					<a type="button" class="btn btn-info btn-lg btn-block" href="character.html">Edit</a>
-				</div>
-				<div class = "row">
-					<a data-toggle="modal" href="#deleteModal" class="btn btn-danger btn-lg btn-block">Delete</a>
-					<!--<button type="button" class="btn btn-danger btn-lg btn-block" data-toggle = "popover" titles = "" data-content = "If you delete a character he or she wi;;
-					be gone" data-origial-title = "Delete Character">Delete</button>  -->
-				</div>
-			</div>
-		</div>
-	</div>
-	
-=======
     <!-- My CSS -->
     <link rel="stylesheet" href="rpg.css">
   </head>
@@ -59,13 +24,13 @@
         </small>
       </div>
       <div class="row">
-        <div class="col-md-8">
-          <select multiple class="form-control">
-            <option>Conan</option>
-            <option>Buster</option>
-            <option>Nigel Thornberry</option>
-            <option>Eddard Stark</option>
-            <option>Satan</option>
+        <div class="col-md-8" >
+          <select multiple class="form-control" id = "characters">
+            <option value = "Ivan Von CherinKov">Ivan Von CherinKov</option>
+            <option value = "Travis Touchdown">Travis Touchdown</option>
+            <option value = "Gamma Akutabi">Gamma Akutabi</option>
+            <option value = "Ezio Auditore">Ezio Auditore</option>
+            <option value = "Balmunk">Balmunk</option>
           </select>
         </div>
         <div class="col-md-4">
@@ -73,7 +38,8 @@
             <a id="create-button" data-toggle="modal" href="#createModal" class="btn btn-lg btn-success btn-block">Create</a>
           </div>
           <div class="row">
-            <a class="btn btn-info btn-lg btn-block" href="character.html">Edit</a>
+		  <!--document.getElementById("characters").value;-->
+            <a class="btn btn-info btn-lg btn-block" id="edit-button" href="character.html#">Edit</a>
           </div>
           <div class="row">
             <a id="delete-button" data-toggle="modal" href="#deleteModal" class="btn btn-lg btn-danger btn-block">Delete</a>
@@ -111,11 +77,11 @@
           <p>Please select the desired information to create your character.</p>
 
           <select class="form-control">
-            <option>Fighter</option>
+            <option>Brawler</option>
             <option>Wizard</option>
-            <option>Thief</option>
-            <option>Ranger</option>
-            <option>Demon</option>
+            <option>Assassin</option>
+            <option>Sword Wielder</option>
+            <option>Recon</option>
           </select>
         </div>
         <div class="modal-footer">
@@ -126,7 +92,6 @@
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 
->>>>>>> 7bfe4bd00b9b9df98b44009658ed2f200488bc74
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="http://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
