@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="rpg.css">
+	<link rel="stylesheet" href="character.css">
 	
 	
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -164,6 +164,24 @@
 				  </table>
 				</div>
 			</div>
+			
+			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseInventory">
+				<h1>Inventory</h1>
+			</a>
+			
+			<div id="collapseInventory" class="panel-collapse collapse">
+				<div class="panel-body">
+					<select multiple class="form-control" id = "inventory" size = 10>
+
+					</select>
+					<br>&nbsp;</br> 
+					<div class="row">
+						<a class="btn btn-info btn-lg btn-block" id="inventory_Add">Add Random Item</a>
+					</div>
+				</div>
+			</div>
+			
+			
         </div>
       </div>
     </div>
@@ -173,5 +191,9 @@
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	
+	<!-- Code specific to our RPG user interface. -->
+    <script src="character.js"></script>
+	
   </body>
 </html>
