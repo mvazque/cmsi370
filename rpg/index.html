@@ -24,7 +24,7 @@
         </small>
       </div>
       <div class="row">
-        <div class="col-md-8" >
+        <!--<div class="col-md-8" id = "characters">
           <select multiple class="form-control" id = "characters" size = 20>
             <option value = "Ivan Von CherinKov">Ivan Von CherinKov</option>
             <option value = "Travis Touchdown">Travis Touchdown</option>
@@ -32,7 +32,20 @@
             <option value = "Ezio Auditore">Ezio Auditore</option>
             <option value = "Balmunk">Balmunk</option>
           </select>
-        </div>
+        </div>-->
+		<table id="characters" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Class</th>
+            <th>Gender</th>
+            <th>Level</th>
+            <th>Money</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
         <div class="col-md-4">
           <div class="row">
             <a id="create-button" data-toggle="modal" href="#createModal" class="btn btn-lg btn-success btn-block">Create</a>
@@ -76,13 +89,23 @@
           <p>Please select the desired information to create your character.</p>
 			Name: <input type="text" name="Name" id = "char_name" value=""><br>
 			</br>
-          <select class="form-control">
-            <option>Brawler</option>
-            <option>Wizard</option>
-            <option>Assassin</option>
-            <option>Sword Wielder</option>
-            <option>Recon</option>
+          <select class="form-control" id = "char_class">
+            <option value = "Brawler">Brawler</option>
+            <option value = "Wizard">Wizard</option>
+            <option value = "Assassin">Assassin</option>
+            <option value = "Sword Wielder">Sword Wielder</option>
+            <option value = "Recon">Recon</option>
           </select>
+		  <br>
+		  <select class="form-control" id = "char_gender">
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+		  </br>
+		  Level: <input type="text" name="Name" id = "char_level" value=""><br>
+			</br>
+		  Money: <input type="text" name="Name" id = "char_money" value=""><br>
+			</br>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
