@@ -22,7 +22,7 @@
     <!-- CSS related materials -->
     <link rel="stylesheet" href="rpg.css">
   </head>
-  <body>
+  <body onload="character_update()">
     <div class="container">
       <div class="row">
         <a href="index.html">Back to Main Menu</a>
@@ -33,7 +33,7 @@
           <img src="http://placehold.it/350x600">
         </div>
         <div class="col-md-6">
-          <h2>Name</h2>
+          <h2 id = character_name>Name</h2>
 			
 			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseAttr">
 				<h1>Attributes</h1>
@@ -50,28 +50,20 @@
 						</thead>
 						<tbody>
 						<tr>
-							<td>Strength</td>
-							<td>18</td>
+							<td>Type</td>
+							<td id = character_type>18</td>
 						</tr>
 						<tr>
-							<td>Constitution</td>
-							<td>10</td>
+							<td>Gender</td>
+							<td id = character_gender>10</td>
 						</tr>
 						<tr>
-							<td>Dexterity</td>
-							<td>10</td>
+							<td>Level</td>
+							<td id = character_level>10</td>
 						</tr>
 						<tr>
-							<td>Intelligence</td>
-							<td>8</td>
-						</tr>
-						<tr>
-							<td>Wisdom</td>
-							<td>8</td>
-						</tr>
-						<tr>
-							<td>Charisma</td>
-							<td>12</td>
+							<td>Money</td>
+							<td id = character_money>8</td>
 						</tr>
 						</tbody>
 					</table>
@@ -180,12 +172,77 @@
 					</div>
 				</div>
 			</div>
+			<div class="row">
+				<a class="btn btn-info btn-lg btn-block" data-toggle="modal" id="edit-button" href="#character">Edit</a>
+			</div>
+			
+			<div class="row">
+				<a id="delete-button" data-toggle="modal" href="#deleteModal" class="btn btn-lg btn-danger btn-block">Delete</a>
+			</div>
 			
 			
         </div>
+		
+		<div class="modal fade" id="character" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Are you sure that you want to delete this character?</h4>
+					</div>
+					<div class="modal-body">
+						<p>Please select the desired information to create your character.</p>
+						Name: <input type="text" name="Name" id = "char_name" value=""><br>
+						</br>
+						<select class="form-control" id = "char_class">
+							<option value = "Brawler">Brawler</option>
+							<option value = "Wizard">Wizard</option>
+							<option value = "Assassin">Assassin</option>
+							<option value = "Sword Wielder">Sword Wielder</option>
+							<option value = "Recon">Recon</option>
+						</select>
+						<br>
+						<select class="form-control" id = "char_gender">
+							<option>Male</option>
+							<option>Female</option>
+						</select>
+						</br>
+						Level: <input type="text" name="Name" id = "char_level" value=""><br>
+						</br>
+						Money: <input type="text" name="Name" id = "char_money" value=""><br>
+						</br>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button id="confirm-edit-button" type="button" class="btn btn-info" data-dismiss="modal">Save Changes</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+			
+			
+			
+			
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Are you sure that you want to delete this character?</h4>
+					</div>
+					<div class="modal-body">
+						Deleting a character is permanent and <strong>cannot be undone</strong>.
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Don't Delete</button>
+						<button id="confirm-delete-button" type="button" class="btn btn-danger" data-dismiss="modal">Delete Character</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+			
       </div>
+	  
     </div>
-
+	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="http://code.jquery.com/jquery.js"></script>
 

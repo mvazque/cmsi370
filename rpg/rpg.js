@@ -15,19 +15,7 @@ $(function(){
 	
 });
 
-$(function () {
 
-    $("#confirm-delete-button").click(function () {
-        console.log("Delete confirmed!!!!!");
-		
-		var element=document.getElementById("characters");
-			element.remove(element.selectedIndex);
-		
-        // Now we dismiss the dialog.
-        $('#deleteModal').modal('hide');
-    });
-
-});
 
 $(function () {
 
@@ -40,24 +28,28 @@ $(function () {
 			character_gender = document.getElementById("char_gender").value;
 
 		console.log(character_name + ' ' + character_level + ' ' + character_money + ' ' + character_class + ' ' + character_gender);
+		
+		
 		$.ajax({
 		type: 'POST',
 		url: "http://lmu-diabolical.appspot.com/characters",
 		data: JSON.stringify({
-			name: character_name,
-			classType: character_class,
-			gender: character_gender,
-			level: character_level,
-			bits: character_money
-		}),
-		contentType: "application/json",
-		dataType: "json",
-		accept: "application/json",
-		complete: function (jqXHR, textStatus) {
-			// The new character can be accessed from the Location header.
+        name: character_nsme,
+        classType: character_class,
+        gender: character_gender,
+        level: character_level,
+        bits: character_money
+    }),
+    contentType: "application/json",
+    dataType: "json",
+    accept: "application/json",
+    complete: function (jqXHR, textStatus) {
+        // The new character can be accessed from the Location header.
         console.log("You may access the new character at:" +
             jqXHR.getResponseHeader("Location"));
-		}
+    }
+});
+
 });
 		
 		
@@ -88,4 +80,3 @@ $(function () {
 				});
 			}
 		);
-});

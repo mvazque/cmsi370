@@ -24,15 +24,6 @@
         </small>
       </div>
       <div class="row">
-        <!--<div class="col-md-8" id = "characters">
-          <select multiple class="form-control" id = "characters" size = 20>
-            <option value = "Ivan Von CherinKov">Ivan Von CherinKov</option>
-            <option value = "Travis Touchdown">Travis Touchdown</option>
-            <option value = "Gamma Akutabi">Gamma Akutabi</option>
-            <option value = "Ezio Auditore">Ezio Auditore</option>
-            <option value = "Balmunk">Balmunk</option>
-          </select>
-        </div>-->
 		<table id="characters" class="table table-striped">
         <thead>
           <tr>
@@ -50,33 +41,10 @@
           <div class="row">
             <a id="create-button" data-toggle="modal" href="#createModal" class="btn btn-lg btn-success btn-block">Create</a>
           </div>
-          <div class="row">
-            <a class="btn btn-info btn-lg btn-block" id="edit-button" href="character.html#">Edit</a>
-          </div>
-          <div class="row">
-            <a id="delete-button" data-toggle="modal" href="#deleteModal" class="btn btn-lg btn-danger btn-block">Delete</a>
           </div>
         </div>
       </div>
     </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Are you sure that you want to delete this character?</h4>
-        </div>
-        <div class="modal-body">
-          Deleting a character is permanent and <strong>cannot be undone</strong>.
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Don't Delete</button>
-          <button id="confirm-delete-button" type="button" class="btn btn-danger" data-dismiss="modal">Delete Character</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
 
   <!-- Modal -->
   <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
@@ -119,27 +87,6 @@
     <script src="http://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-	
-	
-	<!-- Button trigger modal -->
-  <!-- Modal -->
-  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Are you sure you want to delete this character?</h4>
-        </div>
-        <div class="modal-body">
-         Deleting a character is permanent and <strong>cannot be undone</strong>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Don't Delete</button>
-          <button id="configure-delete-button" type="button" class="btn btn-primary btn-danger">Delete Character</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->	
 	
 	<div id = "extras">
 		<a href="forums.html">Forums</a>

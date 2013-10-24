@@ -7,8 +7,8 @@ body{
 }
 
 #extras{
-	position: absolute;
-	top: 650px;
+	position: relative;
+	top: 50px;
     left: 600px;
 	font-size:30pt;
 }
