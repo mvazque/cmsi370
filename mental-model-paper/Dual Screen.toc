@@ -1,0 +1,12 @@
+\contentsline {section}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {2}Research}{1}
+\contentsline {subsection}{\numberline {2.1}Research on Multiple Monitor Computers}{1}
+\contentsline {subsection}{\numberline {2.2}Multiscreen and Video games}{2}
+\contentsline {section}{\numberline {3}Methods}{2}
+\contentsline {subsection}{\numberline {3.1}Explanation of Survey}{2}
+\contentsline {section}{\numberline {4}Discussion}{2}
+\contentsline {subsection}{\numberline {4.1}Research and Two Monitor Computers}{2}
+\contentsline {subsection}{\numberline {4.2}Subjects and Two Monitor Computers}{2}
+\contentsline {subsection}{\numberline {4.3}Research and Video Games}{4}
+\contentsline {subsection}{\numberline {4.4}Subjects and Two Monitor Video Games}{5}
+\contentsline {section}{\numberline {5}Conclusion}{5}
