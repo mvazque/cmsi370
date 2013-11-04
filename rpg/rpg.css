@@ -2,6 +2,8 @@
     margin-bottom: 5px;
 }
 
+/* JD: For better readability, precede your left brace with a space.
+       A space should follow your colons, too. */
 body{
 	background:#CFDBEC;
 }

@@ -1,10 +1,13 @@
 $(function(){
-
+    // JD: Leftover code: this element is not in your source.
 	$('#configure-delete-button').click(function(){
 		console.log("Delete will Happen");
 	});
 	
 });
+
+// JD: Why are these broken up into different functions?
+//     They can all go in the same one.
 
 $(function(){
 
@@ -21,6 +24,7 @@ $(function () {
 
     $("#confirm-create-button").click(function () {
         console.log("Create confirmed!!!!!");
+        // JD: Why are you using getElementById instead of $("#.....")?
 		var character_name = document.getElementById("char_name").value,
 			character_level = document.getElementById("char_level").value,
 			character_money = document.getElementById("char_money").value,
@@ -31,15 +35,16 @@ $(function () {
 		
 		
 		$.ajax({
+            // JD: These options should be indented one more level.
 		type: 'POST',
 		url: "http://lmu-diabolical.appspot.com/characters",
 		data: JSON.stringify({
-        name: character_nsme,
+        name: character_nsme, // JD: Watch out!!!  This typo alone ruins your Ajax call.
         classType: character_class,
-        gender: character_gender,
+        gender: character_gender, // JD: Well, this too: gender must be all uppercase.
         level: character_level,
         bits: character_money
-    }),
+    }), // JD: Indent goes from bad to worse here.
     contentType: "application/json",
     dataType: "json",
     accept: "application/json",
@@ -47,14 +52,20 @@ $(function () {
         // The new character can be accessed from the Location header.
         console.log("You may access the new character at:" +
             jqXHR.getResponseHeader("Location"));
+        // JD: Need some refresh code here.
     }
 });
 
 });
 		
-		
+// JD: OK, this is just painful to look at.  No really...it actually hurts.
 		
     });
+
+    // JD: This block is orphaned---it should be inside a $(function () { }); block too.
+    //     The effect is subtle, so it is not super bad, but if you follow along the
+    //     sample code more closely you would have seen that all of our JavaScript has
+    //     been placed in such a function.
 	var characterRowTemplate = '<tr>' +
           '<td><a href="character.html#11111"></a></td>' +
           '<td></td>' +

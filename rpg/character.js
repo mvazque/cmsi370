@@ -1,5 +1,5 @@
 $(function () {
-
+    // JD: Decent mock random item functionality here.
     $("#inventory_Add").click(function () {
         console.log("New Item!!!!!");
 		var ranks = new Array(),
@@ -32,6 +32,8 @@ $(function () {
     });
 });
 
+// JD: Unnecessary top-level function block again.  Plus this function
+//     has an unnecessary name (character_update).
 $(function character_update(){
 	var	string_URL = document.URL,
 		split_URL = string_URL.split("#"),
@@ -45,6 +47,8 @@ $(function character_update(){
 			gender = character.gender,
 			level = character.level,
 			money = character.money;
+        // JD: Ditto question in rpg.js about getElementById vs. $("#....").
+        //     Plus you should surround your "=" with spaces for readability.
 		document.getElementById("character_name").innerHTML=name;	
 		document.getElementById("character_type").innerHTML=type;	
 		document.getElementById("character_gender").innerHTML=gender;	
@@ -66,13 +70,18 @@ $(function () {
 			type: 'DELETE',
 			url: "http://lmu-diabolical.appspot.com/characters/" + id,
 			success: function (data, textStatus, jqXHR) {
+                // JD: The code below should be indented to this level.
 			console.log("Gone baby gone.");
 			}
 		});
+        // JD: This reload is in the wrong place: remember that the Ajax
+        //     call is *asynchronous*---you may end up reloading before the
+        //     DELETE actually takes place.
 		window.location.href = "index.html";
 	});
 });
 
+// JD: For user convenience, you need some dialog pre-fill code here.
 $(function () {
     $("confirm-edit-button").click(function () {
         console.log("Edit confirmed!!!!!");
@@ -84,7 +93,7 @@ $(function () {
 			character_level = document.getElementById("char_level").value,
 			character_money = document.getElementById("char_money").value,
 			character_class = document.getElementById("char_class").value,
-			character_gender = document.getElementById("char_gender").value;
+			character_gender = document.getElementById("char_gender").value; // All uppercase.
 			
 		$.ajax({
 			type: 'PUT',
@@ -97,11 +106,13 @@ $(function () {
 				level: character_level,
 				money: character_money
 			}),
+            // JD: More indentation inappropriateness here...
 		contentType: "application/json",
 		dataType: "json",
 		accept: "application/json",
 		success: function (data, textStatus, jqXHR) {
         console.log("Done: no news is good news.");
+            // JD: How about updating the page?
 		}
 		});
 		
