@@ -12,6 +12,7 @@ var BoxesTouch = {
             .each(function (index, element) {
                 element.addEventListener("touchmove", BoxesTouch.trackDrag, false);
                 element.addEventListener("touchend", BoxesTouch.endDrag, false);
+				//element.addEventListener("touchstart", BoxesTouch.startCreate, false);
             })
 
             .find("div.box").each(function (index, element) {
@@ -19,7 +20,15 @@ var BoxesTouch = {
                 element.addEventListener("touchend", BoxesTouch.unhighlight, false);
             });
     },
-
+	
+	/*startCreate function (event){
+		$.each(event.changedTouchs; false(index,touch){
+		touch.target.initialX = touch.pageX;
+		touch.target.initialY = touch.pageY;
+		
+		var	newTemp = '<div class = "box" style = "width:10px" height:"10px" left:' + touch.pageX + 'px; top:' + touch.pageY'>"</div>"'
+		}
+	}*/
     /**
      * Tracks a box as it is rubberbanded or moved across the drawing area.
      */
@@ -33,6 +42,20 @@ var BoxesTouch = {
                     top: touch.pageY - touch.target.deltaY
                 });
             }
+			
+			area = $("#drawing-area");
+			areaOff = area.offset();
+			areaRight = areaOff.left + area.width();
+			areaBottom = areaOff.top + area.height();
+			off = $(touch.target).offset();
+			if(off.left > areaRight || off.top > areaBottom){
+				$(touch.target).removeClass("box-highlight");
+				$(touch.target).addClass("box-deleteHighlight");
+			}else{
+				$(touch.target).removeClass("box-deleteHighlight");
+				$(touch.target).addClass("box-highlight");
+			}
+			
         });
         
         // Don't do any touch scrolling.
@@ -44,11 +67,14 @@ var BoxesTouch = {
      */
     endDrag: function (event) {
         $.each(event.changedTouches, function (index, touch) {
+			
             if (touch.target.movingBox) {
                 // Change state to "not-moving-anything" by clearing out
                 // touch.target.movingBox.
                 touch.target.movingBox = null;
             }
+			
+
         });
     },
 
@@ -56,7 +82,10 @@ var BoxesTouch = {
      * Indicates that an element is unhighlighted.
      */
     unhighlight: function () {
-        $(this).removeClass("box-highlight");
+		$(this).removeClass("box-highlight");
+		if($(this).hasClass("box-deleteHighlight")){
+			$(this).remove();
+		}
     },
 
     /**
@@ -65,8 +94,9 @@ var BoxesTouch = {
     startMove: function (event) {
         $.each(event.changedTouches, function (index, touch) {
             // Highlight the element.
-            $(touch.target).addClass("box-highlight");
-
+			
+			$(this).removeClass("box-deleteHighlight");
+			$(touch.target).addClass("box-highlight");
             // Take note of the box's current (global) location.
             var jThis = $(touch.target),
                 startOffset = jThis.offset();

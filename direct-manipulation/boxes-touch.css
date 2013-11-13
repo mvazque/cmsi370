@@ -12,7 +12,13 @@
 }
 
 .box-highlight {
-    box-shadow: 0px 0px 6px #88F;
-    -moz-box-shadow: 0px 0px 6px #88F;
-    -webkit-box-shadow: 0px 0px 6px #88F;
+    box-shadow: 0px 0px 12px #88F;
+    -moz-box-shadow: 0px 0px 12px #88F;
+    -webkit-box-shadow: 0px 0px 12px #88F;
+}
+
+.box-deleteHighlight {
+    box-shadow: 0px 0px 6px #F00;
+    -moz-box-shadow: 0px 0px 6px #F00;
+    -webkit-box-shadow: 0px 0px 6px #F00;
 }
