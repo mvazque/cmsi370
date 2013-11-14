@@ -12,7 +12,7 @@ var BoxesTouch = {
             .each(function (index, element) {
                 element.addEventListener("touchmove", BoxesTouch.trackDrag, false);
                 element.addEventListener("touchend", BoxesTouch.endDrag, false);
-				//element.addEventListener("touchstart", BoxesTouch.startCreate, false);
+				element.addEventListener("touchstart", BoxesTouch.startCreate, false);
             })
 
             .find("div.box").each(function (index, element) {
@@ -21,14 +21,14 @@ var BoxesTouch = {
             });
     },
 	
-	/*startCreate function (event){
+	startCreate function (event){
 		$.each(event.changedTouchs; false(index,touch){
-		touch.target.initialX = touch.pageX;
-		touch.target.initialY = touch.pageY;
+			touch.target.initialX = touch.pageX;
+			touch.target.initialY = touch.pageY;
 		
-		var	newTemp = '<div class = "box" style = "width:10px" height:"10px" left:' + touch.pageX + 'px; top:' + touch.pageY'>"</div>"'
+			var	newTemp = '<div class = "box" style = "width:10px" height:"10px" left:' + touch.pageX + 'px; top:' + touch.pageY'>"</div>"'
 		}
-	}*/
+	}
     /**
      * Tracks a box as it is rubberbanded or moved across the drawing area.
      */
