@@ -21,14 +21,16 @@ var BoxesTouch = {
             });
     },
 	
-	startCreate function (event){
-		$.each(event.changedTouchs; false(index,touch){
+	startCreate: function (event){
+		alert('Muffins');
+		.each(event.changedTouchs; false(index,touch){
 			touch.target.initialX = touch.pageX;
 			touch.target.initialY = touch.pageY;
 		
 			var	newTemp = '<div class = "box" style = "width:10px" height:"10px" left:' + touch.pageX + 'px; top:' + touch.pageY'>"</div>"'
-		}
-	}
+			$("drawing-area").append(newTemp);
+		})
+	},
     /**
      * Tracks a box as it is rubberbanded or moved across the drawing area.
      */
