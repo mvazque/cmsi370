@@ -125,15 +125,10 @@ $(function(){
 				}
 				else{
 					var touchIndex = touch.identifier;
-					if(cache[touchIndex].creatingbox.hasClass("box-deleteHighlight")){
-						alert('chimicherrychanga');
-					}
 					cache[touchIndex].creatingbox.removeClass("create-highlight");
 					cache[touchIndex].creatingbox = null;
 					delete cache[touchIndex];
 				}
-				alert(cache[touchIndex]);
-
 			});
 		},
 
