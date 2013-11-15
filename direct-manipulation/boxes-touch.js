@@ -29,17 +29,14 @@ $(function(){
 			$.each(event.changedTouches, function(index,touch){
 				var	cacheEntry = new Object(),
 					touchIndex = touch.identifier;
-				
 				cacheEntry.initialX = touch.pageX;
 				cacheEntry.initialY = touch.pageY;
 				cache[touchIndex] = cacheEntry;
-				touch.initialX = touch.pageX;
-				touch.initialY = touch.pageY;
 				var	createdBox = '<div class="box"style="width: 0px; height: 0px; left: '+ touch.pageX +'px; top: '+ touch.pageY + 'px">' + 
 					'</div>';
 				$("#drawing-area").append(createdBox);
 				(cache[touchIndex].creatingbox) = $( "div div:last-child" );
-				(cache[touchIndex].creatingbox).addClass( "box-createHighlight");
+				//cache[touchIndex].creatingbox.addClass("box-createHighlight");
 				$("#drawing-area").find("div.box").each(function (index, element) {
 					element.addEventListener("touchstart",BoxesTouch.startMove, false);
 					element.addEventListener("touchend", BoxesTouch.unhighlight, false);
@@ -56,7 +53,6 @@ $(function(){
 				// Don't bother if we aren't tracking anything.
 				var target = touch.target,
 					touchIndex = touch.identifier;
-				
 				if (target.movingBox) {
 					// Reposition the object.
 					target.movingBox.offset({
@@ -83,7 +79,6 @@ $(function(){
 				}
 				else {
 					var	newLeft, newTop, newWidth, newHeight;
-					
 					if (touch.pageX < cache[touchIndex].initialX) {
 						newLeft = touch.pageX;
 						newWidth = cache[touchIndex].initialX-touch.pageX;
@@ -123,16 +118,21 @@ $(function(){
 		 */
 		endDrag: function (event) {
 			$.each(event.changedTouches, function (index, touch) {
-				
 				if (touch.target.movingBox) {
 					// Change state to "not-moving-anything" by clearing out
 					// touch.target.movingBox.
 					touch.target.movingBox = null;
 				}
-				if(touch.creatingbox){
-					touch.creatingbox.removeClass("create-highlight");
-					touch.creatingbox = null;
+				else{
+					var touchIndex = touch.identifier;
+					if(cache[touchIndex].creatingbox.hasClass("box-deleteHighlight")){
+						alert('chimicherrychanga');
+					}
+					cache[touchIndex].creatingbox.removeClass("create-highlight");
+					cache[touchIndex].creatingbox = null;
+					delete cache[touchIndex];
 				}
+				alert(cache[touchIndex]);
 
 			});
 		},
