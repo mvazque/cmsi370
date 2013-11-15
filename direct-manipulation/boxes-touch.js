@@ -27,19 +27,19 @@ $(function(){
 		
 		startCreate: function (event){
 			$.each(event.changedTouches, function(index,touch){
-				var	cacheEntry = new Object();
+				var	cacheEntry = new Object(),
+					touchIndex = touch.identifier;
 				
 				cacheEntry.initialX = touch.pageX;
 				cacheEntry.initialY = touch.pageY;
-				cache[touch.identifier] = cacheEntry;
+				cache[touchIndex] = cacheEntry;
 				touch.initialX = touch.pageX;
 				touch.initialY = touch.pageY;
-				
 				var	createdBox = '<div class="box"style="width: 0px; height: 0px; left: '+ touch.pageX +'px; top: '+ touch.pageY + 'px">' + 
 					'</div>';
 				$("#drawing-area").append(createdBox);
-				(cache[touch.identifier].creatingbox) = $( "div div:last-child" );
-				(cache[touch.identifier].creatingbox).addClass( "box-createHighlight");
+				(cache[touchIndex].creatingbox) = $( "div div:last-child" );
+				(cache[touchIndex].creatingbox).addClass( "box-createHighlight");
 				$("#drawing-area").find("div.box").each(function (index, element) {
 					element.addEventListener("touchstart",BoxesTouch.startMove, false);
 					element.addEventListener("touchend", BoxesTouch.unhighlight, false);
@@ -54,7 +54,9 @@ $(function(){
 		trackDrag: function (event) {
 			$.each(event.changedTouches, function (index, touch) {
 				// Don't bother if we aren't tracking anything.
-				var target = touch.target;
+				var target = touch.target,
+					touchIndex = touch.identifier;
+				
 				if (target.movingBox) {
 					// Reposition the object.
 					target.movingBox.offset({
@@ -79,31 +81,31 @@ $(function(){
 						$(target).addClass("box-highlight");
 					}
 				}
-				else{
+				else {
 					var	newLeft, newTop, newWidth, newHeight;
 					
-					if (touch.pageX < touch.initialX) {
+					if (touch.pageX < cache[touchIndex].initialX) {
 						newLeft = touch.pageX;
-						newWidth = touch.initialX-touch.pageX;
-						if (touch.pageY < touch.initialY){
+						newWidth = cache[touchIndex].initialX-touch.pageX;
+						if (touch.pageY < cache[touchIndex].initialY){
 							newTop = touch.pageY;
-							newHeight = touch.initialY - touch.pageY;
+							newHeight = cache[touchIndex].initialY - touch.pageY;
 						} else{
-							newTop = touch.initialY;
-							newHeight = touch.pageY - touch.initialY;
+							newTop = cache[touchIndex].initialY;
+							newHeight = touch.pageY - cache[touchIndex].initialY;
 						}
 					} else {
-						newLeft = touch.initialX;
-						newWidth = touch.pageX-touch.initialX;
-						if (touch.pageY < touch.initialY){
+						newLeft = cache[touchIndex].initialX;
+						newWidth = touch.pageX-cache[touchIndex].initialX;
+						if (touch.pageY < cache[touchIndex].initialY){
 							newTop = touch.pageY;
-							newHeight = touch.initialY - touch.pageY;
+							newHeight = cache[touchIndex].initialY - touch.pageY;
 						} else{
-							newTop = touch.initialY;
-							newHeight = touch.pageY - touch.initialY;
+							newTop = cache[touchIndex].initialY;
+							newHeight = touch.pageY - cache[touchIndex].initialY;
 						}
 					}
-					cache[touch.identifier].creatingbox
+					cache[touchIndex].creatingbox
 						.offset({
 							left: newLeft,
 							top: newTop
@@ -111,7 +113,6 @@ $(function(){
 						.width(newWidth)
 						.height(newHeight);
 				}
-			
 			// Don't do any touch scrolling.
 			event.preventDefault();
 			});
