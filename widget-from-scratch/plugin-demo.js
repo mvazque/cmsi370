@@ -1,7 +1,7 @@
 $(function () {
-    $(".swivel-this").swivel({
+    $(".roller-this").roller({
         change: function (oldAngle, newAngle) {
-            console.log("Swiveled from " + oldAngle + " to " + newAngle);
+            console.log("Rolled from " + oldAngle + " to " + newAngle);
         }
     });
 });
