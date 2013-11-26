@@ -1,11 +1,10 @@
 $(function () {
     $(".roller-this").roller({
 	values: {
-		front: 'female',
-		back: 'male'
+		front: 'val1',
 	},
         change: function (oldAngle, newAngle) {
-            //console.log("Rolled from " + oldAngle + " to " + newAngle);
+            console.log("Rolled from " + oldAngle + " to " + newAngle);
         }
     });
 });

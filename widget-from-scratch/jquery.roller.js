@@ -13,7 +13,7 @@ by the element next to it which begins to string the element next to it and repe
 (function ($) {
     // Private plugin helpers.
 	var setRollerValues = function ($element,angle){
-		var newCss = "perspective(500px) rotateY(" + angle + "deg) /*rotate(180deg)*/",
+		var newCss = "perspective(500px) rotateY(" + angle + "deg)",
 		    offset = $element.offset(),
 		    left = offset.left,
 		    right = $element.width() + left,
