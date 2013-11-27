@@ -14,7 +14,7 @@ by the element next to it which begins to string the element next to it and repe
     // Private plugin helpers.
 	var setRollerValues = function ($element, displacement, position, sliceCount) {
 		var height = $element.height(),
-            estCircumference = height * sliceCount,
+            estCircumference = height * sliceCount*1.5,
             estRadius = estCircumference / (2 * Math.PI),
             newCss = "perspective(500px) rotateX(" + displacement + "deg) rotateX(" + position + "deg) translateZ(" + estRadius + "px)";
 
@@ -29,7 +29,7 @@ by the element next to it which begins to string the element next to it and repe
     $.fn.roller = function (options) {
         var $this = this,
             $current = null,
-            anchorX = 0,
+            anchorY = 0,
             values = options.values || [ "1", "2", "3", "4" ];
 
         // Initial selection index.
@@ -43,39 +43,82 @@ by the element next to it which begins to string the element next to it and repe
             var $choice = $("<div></div>").text(value).addClass("roller")
                 .mousedown(function (event) {
                     $current = $(this);
-                    anchorX = event.screenX - ($current.data('roller-angle') || 0);
+                    anchorY = event.screenY - ($current.data('roller-angle') || 0);
                 });
             $this.append($choice);
-            setRollerValues($choice, 30, index * increment, values.length);
+            setRollerValues($choice, 0, index * increment, values.length);
+			if(index * increment > 90 && index * increment < 270){
+				$choice.css({
+					opacity : 0
+				});
+			}
         });
 
-        // Other mouse events go at the level of the document because
-        // they might leave the element's bounding box.
-//        $(document)
-//            .mousemove(function (event) {
-//                if ($current) {
-//                    var currentAngle = $current.data('roller-angle') || 0,
-//                        newAngle = event.screenX - anchorX,
-//			newPosition,
-//			angleSign = 1;
-//			
-//					setRollerValues($current, newAngle);
-//
-//					var clippedAngle = Math.abs(newAngle % 360);
-//				
-//					$current.text(clippedAngle < 270 && clippedAngle > 90 ? back : front);
-//                    // Invoke the callback.
-//                    if ($.isFunction(options.change)) {
-//                        options.change.call($current, currentAngle, newAngle);
-//                    }
-//                }
-//            })
-//            .mouseup(function (event) {
-//				if($current){
-//					var clippedAngle = Math.abs(($current.data('roller-angle') || 0) % 360);
-//					setRollerValues($current, (clippedAngle < 270 && clippedAngle > 90) ? -180 : 0);
-//				}
-//                $current = null;
-//            });
+        //Other mouse events go at the level of the document because
+        //they might leave the element's bounding box.
+		$(document)
+			.mousemove(function (event) {
+				if ($current) {
+					var currentAngle = $current.data('roller-angle') || 0,
+						newAngle = event.screenY - anchorY,
+						newPosition,
+						increment = 360 / values.length,
+						addedAngle;
+					
+					values.forEach(function (value, index) {
+						var $choice = $("<div></div>").text(value).addClass("roller")
+						.mousedown(function (event) {
+							$current = $(this);
+							anchorY = event.screenY - ($current.data('roller-angle') || 0);
+						});
+						$this.append($choice);
+						setRollerValues($choice, newAngle, index * increment, values.length);
+						addedAngle = (index * increment + newAngle)%360;
+						if(addedAngle > 90 && addedAngle < 270){
+							$choice.css({
+							opacity : 0
+							});
+						}
+						else{
+							$choice.css({
+							opacity : 1
+							});
+						}
+					});
+
+					if ($.isFunction(options.change)) {
+						options.change.call($current, currentAngle, newAngle);
+					}
+				}
+			})
+			.mouseup(function (event) {
+				if($current){
+					var clippedAngle = Math.abs(($current.data('roller-angle') || 0) % 360);
+					
+					values.forEach(function (value, index) {
+						var $choice = $("<div></div>").text(value).addClass("roller")
+						.mousedown(function (event) {
+							$current = $(this);
+							anchorY = event.screenY - ($current.data('roller-angle') || 0);
+						});
+						$this.append($choice);
+						setRollerValues($choice, newAngle, index * increment, values.length);
+						addedAngle = (index * increment + newAngle)%360;
+						if(addedAngle > 90 && addedAngle < 270){
+							$choice.css({
+							opacity : 0
+							});
+						}
+						else{
+							$choice.css({
+							opacity : 1
+							});
+						}
+					});
+					
+					setRollerValues($current, (clippedAngle < 270 && clippedAngle > 90) ? -180 : 0, 0 , values.length);
+				}
+				$current = null;
+			});
     };
 }(jQuery));
