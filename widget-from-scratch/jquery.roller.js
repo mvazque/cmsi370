@@ -63,9 +63,11 @@ by the element next to it which begins to string the element next to it and repe
 						newAngle = event.screenY - anchorY,
 						newPosition,
 						increment = 360 / values.length,
-						addedAngle;
-					
-					values.forEach(function (value, index) {
+						addedAngle,
+						area = ($current).parent();
+						children = area.find("div");
+						alert(children[6].textContent);
+					children.forEach(function (value, index) {
 						var $choice = $("<div></div>").text(value).addClass("roller")
 						.mousedown(function (event) {
 							$current = $(this);
@@ -92,7 +94,7 @@ by the element next to it which begins to string the element next to it and repe
 				}
 			})
 			.mouseup(function (event) {
-				if($current){
+				/*if($current){
 					var clippedAngle = Math.abs(($current.data('roller-angle') || 0) % 360);
 					
 					values.forEach(function (value, index) {
@@ -117,7 +119,7 @@ by the element next to it which begins to string the element next to it and repe
 					});
 					
 					setRollerValues($current, (clippedAngle < 270 && clippedAngle > 90) ? -180 : 0, 0 , values.length);
-				}
+				}*/
 				$current = null;
 			});
     };
