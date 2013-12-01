@@ -40,7 +40,7 @@
             var $choice = $("<div></div>").text(value).addClass("roller")
                 .mousedown(function (event) {
                     $current = $(this);
-                    anchorY = event.screenY - ($current.data('roller-angle') || 0);
+                    anchorY = 360 - (event.screenY - ($current.data('roller-angle') || 0)) % 360;
                 });
             $this.append($choice);
             setRollerValues($choice, 0, index * increment, values.length);
@@ -57,8 +57,7 @@
 			.mousemove(function (event) {
 				if ($current) {
 					var currentAngle = $current.data('roller-angle') || 0,
-						newAngle = -(event.screenY - anchorY),
-						newPosition,
+						newAngle = (360 - (event.screenY - anchorY)) % 360,
 						increment = 360 / values.length,
 						addedAngle;
 
@@ -90,8 +89,9 @@
 						addedAngle,
 						displacementAngle,
 						indexOffset = 0,
-						newAngle = event.screenY - anchorY,
+						newAngle = (360 - (event.screenY - anchorY)) % 360,
 						indexOffset = Math.round((newAngle % 360) /increment);
+
 					$this.find("div").each(function (index, element) {
 						var $choice = $(element);
 						displacementAngle = ((indexOffset) * increment) % 360;
