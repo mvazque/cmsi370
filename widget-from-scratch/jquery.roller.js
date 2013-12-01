@@ -7,9 +7,6 @@
     change: function () { }
     - Callback for whenever the control has been manipulated.
 */
-/*Create multiple elements that remain hidden and called based on order and relationship to current element. When current
-element reaches 90 degrees(or whatever element makes it invisible) it stays that way and the current element is replaced
-by the element next to it which begins to string the element next to it and repeats the cycle this is to be done*/
 (function ($) {
     // Private plugin helpers.
 	var setRollerValues = function ($element, displacement, position, sliceCount) {
@@ -63,15 +60,11 @@ by the element next to it which begins to string the element next to it and repe
 						newAngle = event.screenY - anchorY,
 						newPosition,
 						increment = 360 / values.length,
-						addedAngle,
-						area = ($current).parent();
-					children = $this.find("div");
-					numberOfChildren = children.length;
+						addedAngle;
 
 					//Cant get the individual elements.
 					$this.find("div").each(function (index, element) {
-						var $choice = element;
-						alert($choice.textContent);
+						var $choice = $(element);
 						setRollerValues($choice, newAngle, index * increment, values.length);
 						addedAngle = (index * increment + newAngle)%360;
 						if(addedAngle > 90 && addedAngle < 270){
@@ -92,18 +85,19 @@ by the element next to it which begins to string the element next to it and repe
 				}
 			})
 			.mouseup(function (event) {
-				/*if($current){
-					var clippedAngle = Math.abs(($current.data('roller-angle') || 0) % 360);
-					
-					values.forEach(function (value, index) {
-						var $choice = $("<div></div>").text(value).addClass("roller")
-						.mousedown(function (event) {
-							$current = $(this);
-							anchorY = event.screenY - ($current.data('roller-angle') || 0);
-						});
-						$this.append($choice);
-						setRollerValues($choice, newAngle, index * increment, values.length);
-						addedAngle = (index * increment + newAngle)%360;
+				if($current){
+					var increment = 360 / values.length,
+						addedAngle,
+						indexOffset = 0;
+					$this.find("div").each(function (index, element) {
+						var $choice = $(element),
+							newAngle = event.screenY - anchorY;
+							//newAngle = Math.abs(($current.data('roller-angle') || 0) % 360);
+							
+						indexOffset = Math.round((newAngle + index * increment) % 360 /increment);	
+						//setRollerValues($choice, newAngle, index * increment, values.length);
+						addedAngle = Math.round(((indexOffset) * increment) % 360);
+						alert(addedAngle);
 						if(addedAngle > 90 && addedAngle < 270){
 							$choice.css({
 							opacity : 0
@@ -114,10 +108,10 @@ by the element next to it which begins to string the element next to it and repe
 							opacity : 1
 							});
 						}
+						setRollerValues($current, increment*index, 0 , values.length);
 					});
 					
-					setRollerValues($current, (clippedAngle < 270 && clippedAngle > 90) ? -180 : 0, 0 , values.length);
-				}*/
+				}
 				$current = null;
 			});
     };
