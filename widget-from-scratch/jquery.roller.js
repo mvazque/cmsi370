@@ -17,7 +17,7 @@ by the element next to it which begins to string the element next to it and repe
             estCircumference = height * sliceCount*1.5,
             estRadius = estCircumference / (2 * Math.PI),
             newCss = "perspective(500px) rotateX(" + displacement + "deg) rotateX(" + position + "deg) translateZ(" + estRadius + "px)";
-
+			
 		$element.css({
 			'-moz-transform': newCss,
 			'-webkit-transform': newCss
@@ -40,7 +40,7 @@ by the element next to it which begins to string the element next to it and repe
         // For each element in the value array, create a new div.
         var increment = 360 / values.length;
         values.forEach(function (value, index) {
-            var $choice = $("<div></div>").text(value).addClass("roller")
+            var $choice = $("<div id = option" + index + "></div>").text(value).addClass("roller")
                 .mousedown(function (event) {
                     $current = $(this);
                     anchorY = event.screenY - ($current.data('roller-angle') || 0);
@@ -65,25 +65,23 @@ by the element next to it which begins to string the element next to it and repe
 						increment = 360 / values.length,
 						addedAngle,
 						area = ($current).parent();
-						children = area.find("div");
-						alert(children[6].textContent);
-					children.forEach(function (value, index) {
-						var $choice = $("<div></div>").text(value).addClass("roller")
-						.mousedown(function (event) {
-							$current = $(this);
-							anchorY = event.screenY - ($current.data('roller-angle') || 0);
-						});
-						$this.append($choice);
+					children = $this.find("div");
+					numberOfChildren = children.length;
+
+					//Cant get the individual elements.
+					$this.find("div").each(function (index, element) {
+						var $choice = element;
+						alert($choice.textContent);
 						setRollerValues($choice, newAngle, index * increment, values.length);
 						addedAngle = (index * increment + newAngle)%360;
 						if(addedAngle > 90 && addedAngle < 270){
 							$choice.css({
-							opacity : 0
+								opacity : 0
 							});
 						}
 						else{
 							$choice.css({
-							opacity : 1
+								opacity : 1
 							});
 						}
 					});
