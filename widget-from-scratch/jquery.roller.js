@@ -37,7 +37,7 @@
         // For each element in the value array, create a new div.
         var increment = 360 / values.length;
         values.forEach(function (value, index) {
-            var $choice = $("<div id = option" + index + "></div>").text(value).addClass("roller")
+            var $choice = $("<div></div>").text(value).addClass("roller")
                 .mousedown(function (event) {
                     $current = $(this);
                     anchorY = event.screenY - ($current.data('roller-angle') || 0);
@@ -88,29 +88,26 @@
 				if($current){
 					var increment = 360 / values.length,
 						addedAngle,
-						indexOffset = 0;
+						displacementAngle,
+						indexOffset = 0,
+						newAngle = event.screenY - anchorY,
+						indexOffset = Math.round((newAngle % 360) /increment);
 					$this.find("div").each(function (index, element) {
-						var $choice = $(element),
-							newAngle = event.screenY - anchorY;
-							//newAngle = Math.abs(($current.data('roller-angle') || 0) % 360);
-							
-						indexOffset = Math.round((newAngle + index * increment) % 360 /increment);	
-						//setRollerValues($choice, newAngle, index * increment, values.length);
-						addedAngle = Math.round(((indexOffset) * increment) % 360);
-						alert(addedAngle);
+						var $choice = $(element);
+						displacementAngle = ((indexOffset) * increment) % 360;
+						setRollerValues($choice, displacementAngle, index * increment, values.length);
+						addedAngle = (index*increment + displacementAngle)%360;
 						if(addedAngle > 90 && addedAngle < 270){
 							$choice.css({
-							opacity : 0
+								opacity : 0
 							});
 						}
 						else{
 							$choice.css({
-							opacity : 1
+								opacity : 1
 							});
 						}
-						setRollerValues($current, increment*index, 0 , values.length);
 					});
-					
 				}
 				$current = null;
 			});
