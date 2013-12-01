@@ -57,7 +57,7 @@
 			.mousemove(function (event) {
 				if ($current) {
 					var currentAngle = $current.data('roller-angle') || 0,
-						newAngle = event.screenY - anchorY,
+						newAngle = -(event.screenY - anchorY),
 						newPosition,
 						increment = 360 / values.length,
 						addedAngle;
