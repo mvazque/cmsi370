@@ -7,15 +7,14 @@ $(function () {
     $("#confirm-create-button").click(function () {
         console.log("Create confirmed!!!!!");
         // JD: Why are you using getElementById instead of $("#.....")?
-		var character_name = document.getElementById("char_name").value,
-			character_level = document.getElementById("char_level").value,
-			character_money = document.getElementById("char_money").value,
-			character_class = document.getElementById("char_class").value,
-			character_gender = document.getElementById("char_gender").value;
-		//console.log(character_name + ' ' + character_level + ' ' + character_money + ' ' + character_class + ' ' + character_gender);
+		var character_name = $("#char_name").val(),
+			character_level = $("#char_level").val(),
+			character_money = $("#char_money").val(),
+			character_class = $("#char_class").data('selection'),
+			character_gender = $("#char_gender").val();
+		console.log(character_name + ' ' + character_level + ' ' + character_money + ' ' + character_class + ' ' + character_gender);
 		
-		
-		/*$.ajax({
+		$.ajax({
             // JD: These options should be indented one more level.
 			type: 'POST',
 			url: "http://lmu-diabolical.appspot.com/characters",
@@ -35,7 +34,7 @@ $(function () {
             jqXHR.getResponseHeader("Location"));
         // JD: Need some refresh code here.
 			}
-		});*/
+		});
 
 	});
 	
