@@ -34,27 +34,28 @@ $(function () {
 
 // JD: Unnecessary top-level function block again.  Plus this function
 //     has an unnecessary name (character_update).
-$(function character_update(){
+$(function (){
 	var	string_URL = document.URL,
 		split_URL = string_URL.split("#"),
 		id = split_URL[1];
 	$.getJSON(
-    "http://lmu-diabolical.appspot.com/characters/" + id,
-    function (character) {
-        // Do something with the character.
-		var	name = character.name,
-			type = character.classType,
-			gender = character.gender,
-			level = character.level,
-			money = character.money;
-        // JD: Ditto question in rpg.js about getElementById vs. $("#....").
-        //     Plus you should surround your "=" with spaces for readability.
-		document.getElementById("character_name").innerHTML = name;	
-		document.getElementById("character_type").innerHTML = type;	
-		document.getElementById("character_gender").innerHTML = gender;	
-		document.getElementById("character_level").innerHTML = level;	
-		document.getElementById("character_money").innerHTML = money;	
-        console.log(character);
+		"http://lmu-diabolical.appspot.com/characters/" + id,
+		function (character) {
+			// Do something with the character.
+			var	name = character.name,
+				type = character.classType,
+				gender = character.gender,
+				level = character.level,
+				money = character.money;
+			console.log(name + ' ' + type + ' ' + gender + ' ' + level + ' ' + money);
+			// JD: Ditto question in rpg.js about getElementById vs. $("#....").
+			//     Plus you should surround your "=" with spaces for readability.
+			$("#character_name").html(name);	
+			$("#character_type").html(type);	
+			$("#character_gender").html(gender);	
+			$("#character_level").html(level);	
+			$("#character_money").html(money);
+			//Updates modal for edit as well
     });
 
 });
@@ -76,7 +77,7 @@ $(function () {
 			// JD: This reload is in the wrong place: remember that the Ajax
 			//     call is *asynchronous*---you may end up reloading before the
 			//     DELETE actually takes place.
-			window.location.href = "index.html";
+			//window.location.href = "index.html";
 		});
         
 	});
@@ -86,15 +87,16 @@ $(function () {
 $(function () {
     $("confirm-edit-button").click(function () {
         console.log("Edit confirmed!!!!!");
+		
 		var	string_URL = document.URL,
 			split_URL = string_URL.split("#"),
 			id = split_URL[1];	
-		
-		var character_name = document.getElementById("char_name").value,
-			character_level = document.getElementById("char_level").value,
-			character_money = document.getElementById("char_money").value,
-			character_class = document.getElementById("char_class").value,
-			character_gender = document.getElementById("char_gender").value; // All uppercase.
+			
+		var character_name = $("#char_name").val(),
+			character_level = $("#char_level").val(),
+			character_money = $("#char_money").val(),
+			character_class = $("#char_class").data('selection'),
+			character_gender = $("#char_gender").val(); // All uppercase.
 			
 		$.ajax({
 			type: 'PUT',
@@ -114,10 +116,22 @@ $(function () {
 			success: function (data, textStatus, jqXHR) {
 			console.log("Done: no news is good news.");
             // JD: How about updating the page?
-			window.location.href = "index.html";
+			window.location.href = "character.html";
 			}
 		});
 		
+		console.log(character_name + ' ' + character_level + ' ' + character_money + ' ' + character_class + ' ' + character_gender);
 	});
+	
+	$(".roller-this").roller({
+        values: [
+            "Brawler",
+            "Wizard",
+            "Assassin",
+            "Sword Wielder",
+            "Recon"
+        ],
+
+    });
 });
 

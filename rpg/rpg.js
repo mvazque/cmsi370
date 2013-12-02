@@ -57,21 +57,23 @@ $(function () {
 		
 });
 
-    // JD: This block is orphaned---it should be inside a $(function () { }); block too.
-    //     The effect is subtle, so it is not super bad, but if you follow along the
-    //     sample code more closely you would have seen that all of our JavaScript has
-    //     been placed in such a function.
-	var characterRowTemplate = '<tr>' +
+    
+	
+$.getJSON(
+	"http://lmu-diabolical.appspot.com/characters",
+	function (characters) {
+		// JD: This block is orphaned---it should be inside a $(function () { }); block too.
+		//     The effect is subtle, so it is not super bad, but if you follow along the
+		//     sample code more closely you would have seen that all of our JavaScript has
+		//     been placed in such a function.
+	
+		var characterRowTemplate = '<tr>' +
           '<td><a href="character.html#11111"></a></td>' +
           '<td></td>' +
           '<td></td>' +
           '<td></td>' +
           '<td></td>' +
         '</tr>';
-	
-$.getJSON(
-	"http://lmu-diabolical.appspot.com/characters",
-	function (characters) {
 		// Do something with the character list.
 		characters.forEach(function (character) {
 			var $characterRow = $(characterRowTemplate);

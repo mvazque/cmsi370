@@ -6,6 +6,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="character.css">
+	<link rel="stylesheet" href="jquery.roller.css">
   </body>
 </html>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
@@ -13,7 +14,7 @@
     <!-- CSS related materials -->
     <link rel="stylesheet" href="rpg.css">
   </head>
-  <body onload="character_update()">
+  <body>
     <div class="container">
       <div class="row">
         <a href="index.html">Back to Main Menu</a>
@@ -185,17 +186,11 @@
 						<p>Please select the desired information to create your character.</p>
 						Name: <input type="text" name="Name" id = "char_name" value=""><br>
 						</br>
-						<select class="form-control" id = "char_class">
-							<option value = "Brawler">Brawler</option>
-							<option value = "Wizard">Wizard</option>
-							<option value = "Assassin">Assassin</option>
-							<option value = "Sword Wielder">Sword Wielder</option>
-							<option value = "Recon">Recon</option>
-						</select>
+						<p><div class="roller-this" id = "char_class">&nbsp;</div></p></br>
 						<br>
 						<select class="form-control" id = "char_gender">
-							<option>Male</option>
-							<option>Female</option>
+							<option>MALE</option>
+							<option>FEMALE</option>
 						</select>
 						</br>
 						Level: <input type="text" name="Name" id = "char_level" value=""><br>
@@ -245,6 +240,7 @@
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<!-- Code specific to our RPG user interface. -->
+	<script src="jquery.roller.js"></script>
     <script src="character.js"></script>
 	
 	
