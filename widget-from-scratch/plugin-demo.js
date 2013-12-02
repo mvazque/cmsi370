@@ -9,6 +9,7 @@ $(function () {
             "Friday",
             "Saturday"
         ],
+		value:"Sunday",
 
         change: function (oldAngle, newAngle) {
             console.log("Rolled from " + oldAngle + " to " + newAngle);

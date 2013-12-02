@@ -49,11 +49,11 @@ $(function character_update(){
 			money = character.money;
         // JD: Ditto question in rpg.js about getElementById vs. $("#....").
         //     Plus you should surround your "=" with spaces for readability.
-		document.getElementById("character_name").innerHTML=name;	
-		document.getElementById("character_type").innerHTML=type;	
-		document.getElementById("character_gender").innerHTML=gender;	
-		document.getElementById("character_level").innerHTML=level;	
-		document.getElementById("character_money").innerHTML=money;	
+		document.getElementById("character_name").innerHTML = name;	
+		document.getElementById("character_type").innerHTML = type;	
+		document.getElementById("character_gender").innerHTML = gender;	
+		document.getElementById("character_level").innerHTML = level;	
+		document.getElementById("character_money").innerHTML = money;	
         console.log(character);
     });
 
@@ -71,13 +71,14 @@ $(function () {
 			url: "http://lmu-diabolical.appspot.com/characters/" + id,
 			success: function (data, textStatus, jqXHR) {
                 // JD: The code below should be indented to this level.
-			console.log("Gone baby gone.");
+				console.log("Gone baby gone.");
 			}
+			// JD: This reload is in the wrong place: remember that the Ajax
+			//     call is *asynchronous*---you may end up reloading before the
+			//     DELETE actually takes place.
+			window.location.href = "index.html";
 		});
-        // JD: This reload is in the wrong place: remember that the Ajax
-        //     call is *asynchronous*---you may end up reloading before the
-        //     DELETE actually takes place.
-		window.location.href = "index.html";
+        
 	});
 });
 
@@ -107,13 +108,14 @@ $(function () {
 				money: character_money
 			}),
             // JD: More indentation inappropriateness here...
-		contentType: "application/json",
-		dataType: "json",
-		accept: "application/json",
-		success: function (data, textStatus, jqXHR) {
-        console.log("Done: no news is good news.");
+			contentType: "application/json",
+			dataType: "json",
+			accept: "application/json",
+			success: function (data, textStatus, jqXHR) {
+			console.log("Done: no news is good news.");
             // JD: How about updating the page?
-		}
+			window.location.href = "index.html";
+			}
 		});
 		
 	});

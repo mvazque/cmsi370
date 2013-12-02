@@ -108,10 +108,13 @@
 							});
 						}
 						if(addedAngle == 0){
-							options.value = $choice.text();
+							$this
+								.data('selectionIndex', index)
+								.data('selection', $choice.text());
 						}
 					});
 				}
+				console.log($this);
 				$current = null;
 			});
     };
