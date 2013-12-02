@@ -33,6 +33,7 @@ $(function () {
 			console.log("You may access the new character at:" +
             jqXHR.getResponseHeader("Location"));
         // JD: Need some refresh code here.
+			location.reload();
 			}
 		});
 
