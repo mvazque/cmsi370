@@ -12,7 +12,7 @@ $(function () {
 			character_money = document.getElementById("char_money").value,
 			character_class = document.getElementById("char_class").value,
 			character_gender = document.getElementById("char_gender").value;
-		console.log(character_name + ' ' + character_level + ' ' + character_money + ' ' + character_class + ' ' + character_gender);
+		//console.log(character_name + ' ' + character_level + ' ' + character_money + ' ' + character_class + ' ' + character_gender);
 		
 		
 		/*$.ajax({
