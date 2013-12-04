@@ -1,8 +1,8 @@
 /* Drawing area properties. */
 .drawing-area {
     position: relative;
-	top: 50px;
-	left: 50px;
+	top: 50px;  /* JD: Nice tweak, moving the drawing area so that you can */
+	left: 50px; /*     test your box deletion code better.                 */
     -moz-user-select: none;
     -webkit-user-select: none;
 }
