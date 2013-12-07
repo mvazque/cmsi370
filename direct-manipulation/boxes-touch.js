@@ -36,28 +36,29 @@ $(function(){
 				cacheEntry.initialY = touch.pageY;
 				cache[touchIndex] = cacheEntry;
 
-               // JD: Alternatively, you can define this "template" as a standalone
-               //     string at the top, then set its attributes via jQuery, e.g.:
-               //
-               //     ...
-               //     TEMP_BOX_TEMPLATE: '<div class="box"></div>';
-               //
-               //     ...
-               //
-               //     var tempBox = $(BoxesTouch.TEMP_BOX_TEMPLATE).css({
-               //         width: "0px",
-               //         height: "0px",
-               //         left: touch.pageX + "px",
-               //         top: touch.pageY + "px"
-               //     });
-               //
-               //     ...
-               //
-               //     You may find this approach to be a little more readable and
-               //     less error-prone.
-               //
+                // JD: Alternatively, you can define this "template" as a standalone
+                //     string at the top, then set its attributes via jQuery, e.g.:
+                //
+                //     ...
+                //     TEMP_BOX_TEMPLATE: '<div class="box"></div>';
+                //
+                //     ...
+                //
+                //     var createdBox = $(BoxesTouch.TEMP_BOX_TEMPLATE).css({
+                //         width: "0px",
+                //         height: "0px",
+                //         left: touch.pageX + "px",
+                //         top: touch.pageY + "px"
+                //     });
+                //
+                //     ...
+                //
+                //     You may find this approach to be a little more readable and
+                //     less error-prone.
+                //
 				var	createdBox = '<div class="box"style="width: 0px; height: 0px; left: '+ touch.pageX +'px; top: '+ touch.pageY + 'px">' +
 					'</div>';
+                // JD: Ack---you hardcoded #drawing-area!
 				$("#drawing-area").append(createdBox);
 				(cache[touchIndex].creatingbox) = $( "div div:last-child" );
 				//cache[touchIndex].creatingbox.addClass("box-createHighlight");
