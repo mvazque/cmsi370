@@ -50,7 +50,12 @@ $(function (){
 			console.log(name + ' ' + type + ' ' + gender + ' ' + level + ' ' + money);
 			// JD: Ditto question in rpg.js about getElementById vs. $("#....").
 			//     Plus you should surround your "=" with spaces for readability.
-			$("#character_name").html(name);	
+			$("#character_name").html(name);
+            // JD: This is where we have a slight disconnect, because characters
+            //     might not always have your selected classes.  But, even if they
+            //     do, your plugin is missing that programmatic connection to set
+            //     its value from outside.  You can always accommodate the "outside"
+            //     class by resetting the plugin with those choices.
 			$("#character_type").html(type);	
 			$("#character_gender").html(gender);	
 			$("#character_level").html(level);	
@@ -95,6 +100,7 @@ $(function () {
 		var character_name = $("#char_name").val(),
 			character_level = $("#char_level").val(),
 			character_money = $("#char_money").val(),
+            // JD: Another integration, nice.
 			character_class = $("#char_class").data('selection'),
 			character_gender = $("#char_gender").val(); // All uppercase.
 			

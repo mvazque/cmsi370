@@ -10,6 +10,7 @@ $(function () {
 		var character_name = $("#char_name").val(),
 			character_level = $("#char_level").val(),
 			character_money = $("#char_money").val(),
+            // JD: Nice that you integrated your roller in here.
 			character_class = $("#char_class").data('selection'),
 			character_gender = $("#char_gender").val();
 		console.log(character_name + ' ' + character_level + ' ' + character_money + ' ' + character_class + ' ' + character_gender);
@@ -43,7 +44,13 @@ $(function () {
 		var link = document.getElementById("edit-button").href;
 		document.getElementById("edit-button").href = link + document.getElementById("characters").value;
 	});
-	
+
+    // JD: Nice integration here, though oddly when it first gets displayed things are
+    //     a bit off.  There might be some initial CSS that gets in the way, because
+    //     your demo page does not show this problem.
+    //
+    //     Also, this is an application-specific use of the plugin now, so you can
+    //     come up with a better selector than "roller-this" :)
 	$(".roller-this").roller({
         values: [
             "Brawler",
