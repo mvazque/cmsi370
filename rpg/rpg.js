@@ -1,12 +1,9 @@
 
-// JD: Why are these broken up into different functions?
-//     They can all go in the same one.
 
 $(function () {
 
     $("#confirm-create-button").click(function () {
         console.log("Create confirmed!!!!!");
-        // JD: Why are you using getElementById instead of $("#.....")?
 		var character_name = $("#char_name").val(),
 			character_level = $("#char_level").val(),
 			character_money = $("#char_money").val(),
@@ -20,12 +17,12 @@ $(function () {
 			type: 'POST',
 			url: "http://lmu-diabolical.appspot.com/characters",
 			data: JSON.stringify({
-				name: character_name, // JD: Watch out!!!  This typo alone ruins your Ajax call.
+				name: character_name,
 				classType: character_class,
-				gender: character_gender, // JD: Well, this too: gender must be all uppercase.
+				gender: character_gender,
 				level: character_level,
 				money: character_money
-			}), // JD: Indent goes from bad to worse here.
+			}),
 			contentType: "application/json",
 			dataType: "json",
 			accept: "application/json",
@@ -48,7 +45,6 @@ $(function () {
     // JD: Nice integration here, though oddly when it first gets displayed things are
     //     a bit off.  There might be some initial CSS that gets in the way, because
     //     your demo page does not show this problem.
-    //
     //     Also, this is an application-specific use of the plugin now, so you can
     //     come up with a better selector than "roller-this" :)
 	$(".roller-this").roller({
@@ -70,11 +66,6 @@ $(function () {
 $.getJSON(
 	"http://lmu-diabolical.appspot.com/characters",
 	function (characters) {
-		// JD: This block is orphaned---it should be inside a $(function () { }); block too.
-		//     The effect is subtle, so it is not super bad, but if you follow along the
-		//     sample code more closely you would have seen that all of our JavaScript has
-		//     been placed in such a function.
-	
 		var characterRowTemplate = '<tr>' +
           '<td><a href="character.html#11111"></a></td>' +
           '<td></td>' +

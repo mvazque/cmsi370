@@ -32,8 +32,7 @@ $(function () {
     });
 });
 
-// JD: Unnecessary top-level function block again.  Plus this function
-//     has an unnecessary name (character_update).
+
 $(function (){
 	var	string_URL = document.URL,
 		split_URL = string_URL.split("#"),
@@ -60,7 +59,7 @@ $(function (){
 			$("#character_gender").html(gender);	
 			$("#character_level").html(level);	
 			$("#character_money").html(money);
-			//Updates modal for edit as well
+			$("#char_name").html(name);
     });
 
 });
@@ -86,18 +85,14 @@ $(function () {
 		});
         
 	});
-});
 
-// JD: For user convenience, you need some dialog pre-fill code here.
-$(function () {
-    $("confirm-edit-button").click(function () {
+    $("#confirm-edit-button").click(function () {
         console.log("Edit confirmed!!!!!");
 		
 		var	string_URL = document.URL,
 			split_URL = string_URL.split("#"),
-			id = split_URL[1];	
-			
-		var character_name = $("#char_name").val(),
+			id = split_URL[1]
+			character_name = $("#char_name").val(),
 			character_level = $("#char_level").val(),
 			character_money = $("#char_money").val(),
             // JD: Another integration, nice.
@@ -120,13 +115,12 @@ $(function () {
 			dataType: "json",
 			accept: "application/json",
 			success: function (data, textStatus, jqXHR) {
-			console.log("Done: no news is good news.");
-            // JD: How about updating the page?
-			window.location.href = "character.html";
+				console.log("Done: no news is good news.");
+				// JD: How about updating the page?
+				location.reload();
 			}
 		});
-		
-		console.log(character_name + ' ' + character_level + ' ' + character_money + ' ' + character_class + ' ' + character_gender);
+		console.log(character_name + ' ' + character_level + ' ' + character_money + ' ' + character_class + ' ' + character_gender);	
 	});
 	
 	$(".roller-this").roller({
