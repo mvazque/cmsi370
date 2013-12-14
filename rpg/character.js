@@ -47,8 +47,6 @@ $(function (){
 				level = character.level,
 				money = character.money;
 			console.log(name + ' ' + type + ' ' + gender + ' ' + level + ' ' + money);
-			// JD: Ditto question in rpg.js about getElementById vs. $("#....").
-			//     Plus you should surround your "=" with spaces for readability.
 			$("#character_name").html(name);
             // JD: This is where we have a slight disconnect, because characters
             //     might not always have your selected classes.  But, even if they
@@ -59,7 +57,11 @@ $(function (){
 			$("#character_gender").html(gender);	
 			$("#character_level").html(level);	
 			$("#character_money").html(money);
-			$("#char_name").html(name);
+			
+			$("#char_name").val(name);
+			$("#char_gender").val(gender);
+			$("#char_level").val(level);
+			$("#char_money").val(money);
     });
 
 });
@@ -81,6 +83,8 @@ $(function () {
 			// JD: This reload is in the wrong place: remember that the Ajax
 			//     call is *asynchronous*---you may end up reloading before the
 			//     DELETE actually takes place.
+			
+			//For some reason this next line breaks the updating of the HTML
 			//window.location.href = "index.html";
 		});
         
