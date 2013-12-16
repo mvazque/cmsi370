@@ -57,11 +57,17 @@ $(function (){
 			$("#character_gender").html(gender);	
 			$("#character_level").html(level);	
 			$("#character_money").html(money);
-			
+
+            // JD2: #character_ vs. #char_ ...not the best way to distinguish the
+            //      two groups of elements.  The name doesn't tell you which is
+            //      which!  Use terms like input or readonly or display or some
+            //      other thing that indicates the difference.
 			$("#char_name").val(name);
 			$("#char_gender").val(gender);
 			$("#char_level").val(level);
 			$("#char_money").val(money);
+        // JD2: The closing } should be indented to where this comment is in order
+        //      to stay faithful to the structure of your code.
     });
 
 });
@@ -85,6 +91,7 @@ $(function () {
 			//     DELETE actually takes place.
 			
 			//For some reason this next line breaks the updating of the HTML
+            // JD2: Yes, I pointed out why in the above comment.
 			//window.location.href = "index.html";
 		});
         
